@@ -1,5 +1,8 @@
 # react-view-table
-Small and simple react table.
+Small, simple and fast react table component.
+
+###[Demos](https://asimonok.github.io/react-view-table/)
+
 ## Installation
 Run the following command:
 `npm i --save react-view-table`
@@ -7,34 +10,34 @@ Run the following command:
 ## Using
 ``` jsx
 const data = [
-    {
-        name: 'John',
-        age: 26,
-        email: 'john@test.test',
-    },
-    {
-        name: 'Amanda',
-        age: 24,
-        email: 'amanda@test.test',
-    },
+  {
+    name: 'John',
+    age: 26,
+    email: 'john@test.test',
+  },
+  {
+    name: 'Amanda',
+    age: 24,
+    email: 'amanda@test.test',
+  },
 ]
 
 const columns = [
-    {
-        label: 'Name',
-        accessor: 'name',
-        width: 150,
-    },
-    {
-        label: 'Age',
-        accessor: 'age',
-        width: 70,
-    },
-    {
-        label: 'Email',
-        accessor: 'email',
-        width: 200,
-    },
+  {
+    label: 'Name',
+    accessor: 'name',
+    width: 150,
+  },
+  {
+    label: 'Age',
+    accessor: 'age',
+    width: 70,
+  },
+  {
+    label: 'Email',
+    accessor: 'email',
+    width: 200,
+  },
 ]
 
 <ReactViewTable
@@ -77,9 +80,9 @@ const columns = [
 
 ``` jsx
 const headerCellRenderer = ({ style, key, label }) => (
-    <div className='headerCell' style={style} key={key}>
-        {label}
-    </div>
+  <div className='headerCell' style={style} key={key}>
+    {label}
+  </div>
 )
 ```
 
@@ -87,8 +90,18 @@ const headerCellRenderer = ({ style, key, label }) => (
 
 ``` jsx
 const bodyCellRenderer = ({ style, key, accessor, row }) => (
-    <div className='cell' style={style} key={key}>
-        {row[accessor]}
-    </div>
+  <div className='cell' style={style} key={key}>
+    {row[accessor]}
+  </div>
+)
+```
+
+### NoResult Renderer
+
+``` jsx
+const noResult = ({ width, height }) => (
+  <div className='ReactViewTable-noResult' style={{ width, height }}>
+    No Result
+  </div>
 )
 ```
