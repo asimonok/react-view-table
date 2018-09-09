@@ -27,12 +27,12 @@ const columns = [
     },
     {
         label: 'Age',
-        accessor: 'age,
+        accessor: 'age',
         width: 70,
     },
     {
         label: 'Email',
-        accessor: 'email,
+        accessor: 'email',
         width: 200,
     },
 ]
