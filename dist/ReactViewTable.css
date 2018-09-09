@@ -1,0 +1,43 @@
+.ReactViewTable-header {
+    overflow: hidden;
+    background-color: #222222;
+}
+
+.ReactViewTable-headerContent {
+    display: flex;
+}
+
+.ReactViewTable-headerCell {
+    box-sizing: border-box;
+    padding: 0.75em 1em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.ReactViewTable-body {
+    overflow: auto;
+}
+
+.ReactViewTable-row {
+    display: flex;
+    align-items: center;
+    min-width: 100%;
+}
+
+.ReactViewTable-row:nth-child(even) {
+    background-color: lightgrey;
+}
+
+.ReactViewTable-cell {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding: 0.75em 1em;
+    text-align: center;
+}
+
+.ReactViewTable-noResult {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgrey;
+}
