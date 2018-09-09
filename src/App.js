@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import ReactViewTable from './apps/ReactViewTable'
+import React, { Component } from 'react'
+import './App.css'
+import ReactViewTable from './lib/ReactViewTable'
 
 const getRandomData = (rows) => {
   const res = []
@@ -80,7 +79,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div style={{ width: 700, }}>
@@ -107,8 +105,8 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

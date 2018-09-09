@@ -10,6 +10,18 @@ class ReactViewTable extends React.Component {
     )
   }
 
+  static defaultProps = {
+    data: [],
+    noResultRenderer: ReactViewTable.noResultRenderer,
+    tableClassName: CLASS_NAMES.table,
+    headerClassName: CLASS_NAMES.header,
+    headerContentClassName: CLASS_NAMES.headerContent,
+    headerCellClassName: CLASS_NAMES.headerCell,
+    bodyClassName: CLASS_NAMES.body,
+    rowClassName: CLASS_NAMES.row,
+    cellClassName: CLASS_NAMES.cell,
+  }
+
   state = {
     tableWidth: 0,
     scrollLeft: 0,
@@ -51,7 +63,7 @@ class ReactViewTable extends React.Component {
   }
 
   headerCellRenderer = ({ label, style, key }) => {
-    const { headerCellClassName = CLASS_NAMES.headerCell } = this.props
+    const { headerCellClassName } = this.props
 
     return (
       <div className={headerCellClassName} style={style} key={key}>
@@ -92,15 +104,15 @@ class ReactViewTable extends React.Component {
   render () {
     const {
       maxHeight,
-      data = [],
+      data,
       columns,
-      noResultRenderer = ReactViewTable.noResultRenderer,
-      tableClassName = CLASS_NAMES.table,
-      headerClassName = CLASS_NAMES.header,
-      headerContentClassName = CLASS_NAMES.headerContent,
-      bodyClassName = CLASS_NAMES.body,
-      rowClassName = CLASS_NAMES.row,
-      cellClassName = CLASS_NAMES.cell,
+      noResultRenderer,
+      tableClassName,
+      headerClassName,
+      headerContentClassName,
+      bodyClassName,
+      rowClassName,
+      cellClassName,
     } = this.props
     const {
       scrollLeft,
