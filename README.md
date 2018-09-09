@@ -22,7 +22,7 @@ const data = [
 const columns = [
     {
         label: 'Name',
-        accessor: 'name,
+        accessor: 'name',
         width: 150,
     },
     {
