@@ -22,7 +22,6 @@ class ReactViewTable extends React.Component {
     bodyClassName: CLASS_NAMES.body,
     rowClassName: CLASS_NAMES.row,
     cellClassName: CLASS_NAMES.cell,
-    defaultHeaderCellRenderer: this.defaultHeaderCellRenderer,
   }
 
   state = {
@@ -87,6 +86,7 @@ class ReactViewTable extends React.Component {
     const headerColumns = columns.map((column, index) => {
       const {
         headerCellRenderer = defaultHeaderCellRenderer,
+        headerContentCellRenderer = defaultHeaderContentCellRenderer,
         width = CELL_WIDTH,
         label,
         ...restProps,
@@ -97,7 +97,7 @@ class ReactViewTable extends React.Component {
       }
       contentWidth += width
 
-      const content = defaultHeaderContentCellRenderer({ label, ...restProps })
+      const content = headerContentCellRenderer({ label, ...restProps })
 
       return headerCellRenderer({ style, label, key: index, ...restProps, content })
     })
