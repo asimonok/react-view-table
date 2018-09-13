@@ -10,6 +10,8 @@ class ReactViewTable extends React.Component {
     )
   }
 
+  static defaultHeaderContentCellRenderer = ({ label }) => label
+
   static defaultProps = {
     data: [],
     noResultRenderer: ReactViewTable.noResultRenderer,
@@ -20,6 +22,7 @@ class ReactViewTable extends React.Component {
     bodyClassName: CLASS_NAMES.body,
     rowClassName: CLASS_NAMES.row,
     cellClassName: CLASS_NAMES.cell,
+    defaultHeaderCellRenderer: this.defaultHeaderCellRenderer,
   }
 
   state = {
@@ -75,13 +78,15 @@ class ReactViewTable extends React.Component {
   getHeaderColumns = () => {
     const {
       columns,
+      defaultHeaderCellRenderer = this.headerCellRenderer,
+      defaultHeaderContentCellRenderer = ReactViewTable.defaultHeaderContentCellRenderer,
     } = this.props
 
     let contentWidth = 0
 
     const headerColumns = columns.map((column, index) => {
       const {
-        headerCellRenderer = this.headerCellRenderer,
+        headerCellRenderer = defaultHeaderCellRenderer,
         width = CELL_WIDTH,
         label,
         ...restProps,
@@ -92,7 +97,9 @@ class ReactViewTable extends React.Component {
       }
       contentWidth += width
 
-      return headerCellRenderer({ style, label, key: index, ...restProps })
+      const content = defaultHeaderContentCellRenderer({ label, ...restProps })
+
+      return headerCellRenderer({ style, label, key: index, ...restProps, content })
     })
 
     return {
@@ -113,6 +120,8 @@ class ReactViewTable extends React.Component {
       bodyClassName,
       rowClassName,
       cellClassName,
+      defaultContentCellRenderer,
+      defaultBodyContentCellRenderer,
     } = this.props
     const {
       scrollLeft,
@@ -149,6 +158,8 @@ class ReactViewTable extends React.Component {
               contentWidth={contentWidth}
               rowClassName={rowClassName}
               cellClassName={cellClassName}
+              defaultContentCellRenderer={defaultContentCellRenderer}
+              defaultBodyContentCellRenderer={defaultBodyContentCellRenderer}
             />
           ) : noResultRenderer({ width: tableWidth, height: maxHeight - headerHeight })}
         </div>
