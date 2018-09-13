@@ -22,8 +22,8 @@ class ReactViewTableBody extends React.PureComponent {
       data,
       contentWidth,
       rowClassName,
-      defaultBodyCellRenderer = this.bodyCellRenderer,
-      defaultBodyContentCellRenderer = ReactViewTableBody.bodyContentCellRenderer,
+      defaultCellRenderer = this.bodyCellRenderer,
+      defaultCellContentRenderer = ReactViewTableBody.bodyContentCellRenderer,
     } = this.props
 
     let totalWidth = 0
@@ -32,8 +32,8 @@ class ReactViewTableBody extends React.PureComponent {
       totalWidth = 0
       const cells = columns.map((column, columnIndex) => {
         const {
-          bodyCellRenderer = defaultBodyCellRenderer,
-          bodyContentCellRenderer = defaultBodyContentCellRenderer,
+          cellRenderer = defaultCellRenderer,
+          cellContentRenderer = defaultCellContentRenderer,
           width = CELL_WIDTH,
           accessor,
         } = column
@@ -43,9 +43,9 @@ class ReactViewTableBody extends React.PureComponent {
         }
         totalWidth += width
 
-        const content = bodyContentCellRenderer({ row, text: row[accessor], accessor })
+        const content = cellContentRenderer({ row, text: row[accessor], accessor })
 
-        return bodyCellRenderer({ style, accessor, row, key: `${index}:${columnIndex}`, content })
+        return cellRenderer({ style, accessor, row, key: `${index}:${columnIndex}`, content })
       })
 
       const style = {

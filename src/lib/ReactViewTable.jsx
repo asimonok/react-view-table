@@ -120,8 +120,8 @@ class ReactViewTable extends React.Component {
       bodyClassName,
       rowClassName,
       cellClassName,
-      defaultContentCellRenderer,
-      defaultBodyContentCellRenderer,
+      defaultCellRenderer,
+      defaultCellContentRenderer,
     } = this.props
     const {
       scrollLeft,
@@ -158,8 +158,8 @@ class ReactViewTable extends React.Component {
               contentWidth={contentWidth}
               rowClassName={rowClassName}
               cellClassName={cellClassName}
-              defaultContentCellRenderer={defaultContentCellRenderer}
-              defaultBodyContentCellRenderer={defaultBodyContentCellRenderer}
+              defaultCellRenderer={defaultCellRenderer}
+              defaultCellContentRenderer={defaultCellContentRenderer}
             />
           ) : noResultRenderer({ width: tableWidth, height: maxHeight - headerHeight })}
         </div>
